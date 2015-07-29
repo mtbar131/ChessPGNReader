@@ -25,7 +25,7 @@ public class ChessBoard {
 		return new ArrayList<String>();
 	}
 	
-	boolean isValidMove(String piece, String finalPosition) {
+	boolean isValidMove(String from, String to) {
 		return true;
 	}
 	
