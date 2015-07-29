@@ -66,6 +66,9 @@ public class ChessBoard {
 
 	boolean isValidMove(String initialPosition, String finalPosition) {
 
+		if(whichPiece(initialPosition).charAt(0) == whichPiece(finalPosition).charAt(0))
+			return false;
+		
 		int[] initialIndex=sanToIndex(initialPosition);
 		int[] finalIndex=sanToIndex(finalPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
