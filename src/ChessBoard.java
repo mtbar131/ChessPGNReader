@@ -19,13 +19,21 @@ public class ChessBoard {
 	
 	}
 	
-	int[] sanToIndex(String position) {
-		return null;
-		
+	int[] sanToIndex(String SANposition)
+	{
+		int rowColIndex[] = new int[2];
+		char file = SANposition.charAt(0);
+		int rank = Integer.parseInt(Character.toString(SANposition.charAt(1)));
+		rowColIndex[0] = 8 - rank;
+		rowColIndex[1] = file - 'a';
+		return rowColIndex;	
 	}
 	
-	String indexToSan(int i,int j){
-		return null;
+	String indexToSan(int row,int column)
+	{
+		String file = Character.toString( (char)('a' + column) );
+		String rank = Integer.toString( 8 - row );
+		return file + rank;
 	}
 	
 	ChessBoard updateBoard(String initialPosition, String finalPosition) {
