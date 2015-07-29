@@ -59,6 +59,15 @@ public class MoveParser {
 
 		return currentBoardState;
 	}
+	
+	boolean isWhitesMoveFirst(String move) {
+		int countOfDot = 0;
+		for ( int i = 0; i < move.length(); i++ ) {
+			if ( move.charAt(i) == '.' )
+				countOfDot++;
+		}
+		return countOfDot == 1;
+	}
 
 	public static void main(String args[]){
 		MoveParser mv = new MoveParser();
