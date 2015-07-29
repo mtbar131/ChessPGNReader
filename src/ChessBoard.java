@@ -64,10 +64,8 @@ public class ChessBoard {
 		return positions;		
 	}
 
-	boolean isValidMove(String initialPosition, String finalPosition) {
+	boolean isValidMove(String initialPosition, String finalPosition, boolean isCapture) {
 
-		if(whichPiece(initialPosition).charAt(0) == whichPiece(finalPosition).charAt(0))
-			return false;
 		
 		int[] initialIndex=sanToIndex(initialPosition);
 		int[] finalIndex=sanToIndex(finalPosition);
@@ -79,8 +77,11 @@ public class ChessBoard {
 		if (piece.equals("WP")||piece.equals("BP")){
 			if(rowDiffAbs == 2 && columnDiffAbs == 0)
 				return true;
-			else if(rowDiffAbs==1  && (columnDiffAbs==0)||columnDiffAbs==1)
+			else if(rowDiffAbs==1 && columnDiffAbs==0)
 				return true;
+			else if(rowDiffAbs == 1 && columnDiffAbs==1 && isCapture)
+				return true;
+			return false;
 		}
 		
 		if (piece.equals("WK")||piece.equals("BK")){

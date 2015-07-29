@@ -61,7 +61,7 @@ public class MoveParser {
 		String newPosition = move;
 		ArrayList<String> currentPositions;
 
-		if(move.equals("O-O-O")){
+		if(move.equals("O-O")){
 
 			if(isWhitesTurn)
 			{
@@ -75,7 +75,7 @@ public class MoveParser {
 			}
 			
 		}
-		else if(move.equals("O-O")){
+		else if(move.equals("O-O-O")){
 			if(isWhitesTurn)
 			{
 				currentBoardState.updateBoard("e1","c1");
@@ -108,7 +108,7 @@ public class MoveParser {
 
 		for (String positions : currentPositions){
 
-			if(currentBoardState.isValidMove(positions, newPosition) &&
+			if(currentBoardState.isValidMove(positions, newPosition , move.contains(Character.toString('x'))) &&
 					matchesWithInput(positions, move) &&
 					isaValidCapture(currentBoardState, move, newPosition)){
 				System.out.println(matchesWithInput(positions, move));
