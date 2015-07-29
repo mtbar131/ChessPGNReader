@@ -74,34 +74,26 @@ public class ChessBoard {
 		int[] initialIndex=sanToIndex(initialPosition);
 		int[] finalIndex=sanToIndex(initialPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
+		
+		int rowDiffAbs=Math.abs(finalIndex[0]-initialIndex[0]);
+		int columnDiffAbs=Math.abs(finalIndex[1]-initialIndex[1]);
 
-		if(piece.equals("WP"))
-		{
-			ArrayList<int[]> whitePawnMoves=possibleMoves.get("WP"); 	
-
-			for (int[] moves : whitePawnMoves) {
-				if(finalIndex[0]==(moves[0]+initialIndex[0]) && finalIndex[1]==moves[1]+initialIndex[1])
-				{
-					return true;
-				}
+		if (piece.equals("WP")||piece.equals("BP")){
+			if(rowDiffAbs==1 && (columnDiffAbs==0)||columnDiffAbs==1) {
+				return true;
 			}
-
 		}
 		
-		if(piece.equals("BP"))
-		{
-			ArrayList<int[]> whitePawnMoves=possibleMoves.get("BP"); 	
-
-			for (int[] moves : whitePawnMoves) {
-				if(finalIndex[0]==moves[0]+initialIndex[0] && finalIndex[1]==moves[1]+initialIndex[1])
-				{
-					return true;
-				}
+		if (piece.equals("WK")||piece.equals("BK")){
+			if ((rowDiffAbs==0 && columnDiffAbs==1) || (rowDiffAbs==1 && columnDiffAbs==0) ||
+					(rowDiffAbs==1 && columnDiffAbs==1))				
+			{
+				return true;
 			}
-
 		}
-
-
+		
+	
+		
 		return false;
 	}
 
