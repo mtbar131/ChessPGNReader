@@ -34,8 +34,8 @@ public class ChessBoard {
 	
 	String indexToSan(int row,int column)
 	{
-		String file = Character.toString( (char)('a' + column) );
-		String rank = Integer.toString( 8 - row );
+		String file = Character.toString((char) ('a' + column));
+		String rank = Integer.toString(8 - row);
 		return file + rank;
 	}
 	
@@ -109,6 +109,9 @@ public class ChessBoard {
 			}
 		}
 	}
-	
+
+	ChessBoard promotePawn(String piece, String postion){
+
+	}
 	
 }
