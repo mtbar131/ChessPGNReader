@@ -1,11 +1,7 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 public class MoveParser {
-
-	public boolean isaChar(char ch){
-		return (ch >= 'a') && (ch <= 'z');
-	}
 
 	public boolean isaDigit(char ch){
 		return (ch >= '0') && (ch <= '9');
@@ -37,7 +33,7 @@ public class MoveParser {
 				return true;
 		} else if(i == 4){
 			if(input.charAt(i - 2) == 'x'){
-				return input.charAt(i - 3) == position.charAt(1);
+				return input.charAt(i - 3) == position.charAt(0);
 			}
 			else
 				return input.charAt(i - 3) == position.charAt(1) &&
@@ -47,6 +43,12 @@ public class MoveParser {
 					input.charAt(i - 4) == position.charAt(0);
 		}
 		return false;
+	}
+
+	boolean isaValidCapture(ChessBoard currBoard, String move, String finalPos){
+		if(!currBoard.whichPiece(finalPos).equals("") && !move.contains(Character.toString('x')))
+			return false;
+		return true;
 	}
 
 	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn){
@@ -81,9 +83,20 @@ public class MoveParser {
 
 		for (String positions : currentPositions){
 			if(currentBoardState.isValidMove(positions, newPosition) &&
-					matchesWithInput(positions, move)){
+					matchesWithInput(positions, move) &&
+					isaValidCapture(currentBoardState, move, newPosition)){
 				currPos = positions;
 			}
+		}
+
+		if(move.contains(Character.toString('='))){
+			String p;
+			if(isWhitesTurn)
+				p = "W";
+			else
+				p = "B";
+			p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
+			currentBoardState.promotePawn(p, newPosition);
 		}
 
 		return currentBoardState.updateBoard(currPos, newPosition);
@@ -105,5 +118,13 @@ public class MoveParser {
 //		System.out.println(mv.getFinalPosition("Kxe1"));
 //		System.out.println(mv.getFinalPosition("Ra6+"));
 //		System.out.println(mv.getFinalPosition("Kaf6"));
+
+		System.out.println(mv.matchesWithInput("e3", "Ne3"));
+		System.out.println(mv.matchesWithInput("f1", "Ne3"));
+		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
+		System.out.println(mv.matchesWithInput("e3", "Nec3"));
+		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
+		System.out.println(mv.matchesWithInput("a3", "Naxe3"));
+		System.out.println(mv.matchesWithInput("e1", "Ne1xc3"));
 	}
 }
