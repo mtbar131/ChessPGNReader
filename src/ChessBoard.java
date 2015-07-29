@@ -24,8 +24,7 @@ public class ChessBoard {
 
 	}
 
-	int[] sanToIndex(String SANposition)
-	{
+	int[] sanToIndex(String SANposition) {
 		int rowColIndex[] = new int[2];
 		char file = SANposition.charAt(0);
 		int rank = Integer.parseInt(Character.toString(SANposition.charAt(1)));
@@ -34,8 +33,7 @@ public class ChessBoard {
 		return rowColIndex;	
 	}
 
-	String indexToSan(int row,int column)
-	{
+	String indexToSan(int row,int column) {
 		String file = Character.toString((char) ('a' + column));
 		String rank = Integer.toString(8 - row);
 		return file + rank;
@@ -56,12 +54,9 @@ public class ChessBoard {
 
 	ArrayList<String> getPositions(String piece) {
 		ArrayList<String> positions=new ArrayList<String>();
-		for(int i=0;i<8;i++)
-		{
-			for(int j=0;j<8;j++)
-			{
-				if(board[i][j].equals(piece))
-				{
+		for (int i=0;i<8;i++){
+			for (int j=0;j<8;j++){
+				if (board[i][j].equals(piece)){
 					positions.add(indexToSan(i,j));
 				}
 			}
@@ -74,34 +69,50 @@ public class ChessBoard {
 		int[] initialIndex=sanToIndex(initialPosition);
 		int[] finalIndex=sanToIndex(initialPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
+		
+		int rowDiffAbs=Math.abs(finalIndex[0]-initialIndex[0]);
+		int columnDiffAbs=Math.abs(finalIndex[1]-initialIndex[1]);
 
-		if(piece.equals("WP"))
-		{
-			ArrayList<int[]> whitePawnMoves=possibleMoves.get("WP"); 	
-
-			for (int[] moves : whitePawnMoves) {
-				if(finalIndex[0]==(moves[0]+initialIndex[0]) && finalIndex[1]==moves[1]+initialIndex[1])
-				{
-					return true;
-				}
+		if (piece.equals("WP")||piece.equals("BP")){
+			if(rowDiffAbs==1 && (columnDiffAbs==0)||columnDiffAbs==1) {
+				return true;
 			}
-
 		}
 		
-		if(piece.equals("BP"))
-		{
-			ArrayList<int[]> whitePawnMoves=possibleMoves.get("BP"); 	
-
-			for (int[] moves : whitePawnMoves) {
-				if(finalIndex[0]==moves[0]+initialIndex[0] && finalIndex[1]==moves[1]+initialIndex[1])
-				{
-					return true;
-				}
+		if (piece.equals("WK")||piece.equals("BK")){
+			if ((rowDiffAbs==0 && columnDiffAbs==1) || (rowDiffAbs==1 && columnDiffAbs==0) ||
+					(rowDiffAbs==1 && columnDiffAbs==1))				
+			{
+				return true;
 			}
-
 		}
-
-
+		
+		if (piece.equals("WB")||piece.equals("BB")) {
+			if (rowDiffAbs==columnDiffAbs) {
+				return true;
+			}
+		}
+		
+		if (piece.equals("WR")||piece.equals("BR")) {
+			if ((rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)){
+				return true;
+			}
+		}
+		
+		if(piece.equals("WQ")||piece.equals("BQ"))
+		{
+			if ((rowDiffAbs==columnDiffAbs)||
+					(rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)) {
+				return true;
+			}
+		}
+			
+		if (piece.equals("WN")||piece.equals("BN")) {
+			if (rowDiffAbs==2 && columnDiffAbs==1){
+				return true;
+			}
+		}
+		
 		return false;
 	}
 

@@ -30,4 +30,10 @@ public class ChessGame {
 		System.out.println("################  CHESSBOARD STATE ################");
 		board.printChessboard();
 	}
+	
+	public static void main(String args[]) {
+		String FILEPATH = "./src/pgn_sample.txt";
+		ChessGame game = new ChessGame();
+		game.processPGN(FILEPATH);
+	}
 }

@@ -47,13 +47,14 @@ public class MoveParserTest {
 
     }
 
-    @Test
-    public void testIsWhitesMoveFirst() throws Exception {
+    
+	@Test
+	public void testIsWhitesMoveFirst() {
+		MoveParser moveparser = new MoveParser();
+		
+		assertEquals(true, moveparser.isWhitesMoveFirst("1. e4 e6"));
+		assertEquals(false, moveparser.isWhitesMoveFirst("1... e4 e6"));
+	}
 
-    }
-
-    @Test
-    public void testMain() throws Exception {
-
-    }
 }
+
