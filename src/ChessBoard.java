@@ -126,6 +126,7 @@ public class ChessBoard {
 		int[] positionIndex=sanToIndex(postion);
 		board[positionIndex[0]][positionIndex[1]]=piece;	
 		return this;
+
 	}
 
 }
