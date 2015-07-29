@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 
@@ -39,17 +41,23 @@ public class ChessBoardTest {
 
 	@Test
 	public void testWhichPiece() {
-		fail("Not yet implemented");
+		ChessBoard board = new ChessBoard();
+		assertEquals("WR",board.whichPiece("a1"));
 	}
 
 	@Test
 	public void testGetPositions() {
-		fail("Not yet implemented");
+		ChessBoard board = new ChessBoard();
+		ArrayList<String> expectedOutput=new ArrayList<String>();
+		expectedOutput.add("e1");
+		assertEquals(expectedOutput,board.getPositions("WK"));
 	}
 
 	@Test
 	public void testIsValidMove() {
-		fail("Not yet implemented");
+		ChessBoard board = new ChessBoard();
+		board.isValidMove("a2", "a3");
+		
 	}
 
 }
