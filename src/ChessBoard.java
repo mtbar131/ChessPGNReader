@@ -93,12 +93,6 @@ public class ChessBoard {
 			}
 		}
 		
-		if (piece.equals("WB")||piece.equals("BB")) {
-			if (rowDiffAbs==columnDiffAbs) {
-				return true;
-			}
-		}
-		
 		if (piece.equals("WR")||piece.equals("BR")) {
 			if ((rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)){
 				return true;
