@@ -37,12 +37,11 @@ public class ChessBoard {
 	}
 	
 	ChessBoard updateBoard(String initialPosition, String finalPosition) {
-		return new ChessBoard();
-	}
-	
-	ChessBoard updateChessBoard(String move)
-	{	
-		return null;
+		int[] initialIndex=sanToIndex(initialPosition);
+		int[] finalIndex=sanToIndex(finalPosition);
+		board[finalIndex[0]][finalIndex[1]]=board[initialIndex[0]][initialIndex[1]];
+		board[initialIndex[0]][initialIndex[1]]="";
+		return this;
 	}
 	
 	String whichPiece(String position){
@@ -57,7 +56,7 @@ public class ChessBoard {
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(board[i][j]==piece)
+				if(board[i][j].equals(piece))
 				{
 					positions.add(indexToSan(i,j));
 				}
@@ -66,7 +65,9 @@ public class ChessBoard {
 		return positions;		
 	}
 	
+
 	boolean isValidMove(String initialPosition, String finalPosition) {
+
 		return true;
 	}
 	
@@ -76,7 +77,7 @@ public class ChessBoard {
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(board[i][j]!="")
+				if(!board[i][j].equals(""))
 				{
 					System.out.println(indexToSan(i, j)+"-"+board[i][j]);
 				}
