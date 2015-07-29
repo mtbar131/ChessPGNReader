@@ -99,7 +99,10 @@ public class ChessBoard {
 	}
 
 	ChessBoard promotePawn(String piece, String postion){
-		return null;
+		
+		int[] positionIndex=sanToIndex(postion);
+		board[positionIndex[0]][positionIndex[1]]=piece;	
+		return this;
 	}
 	
 }
