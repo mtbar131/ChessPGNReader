@@ -105,6 +105,20 @@ public class ChessBoard {
 			}
 		}
 		
+		if(piece.equals("WQ")||piece.equals("BQ"))
+		{
+			if ((rowDiffAbs==columnDiffAbs)||
+					(rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)) {
+				return true;
+			}
+		}
+			
+		if (piece.equals("WN")||piece.equals("BN")) {
+			if (rowDiffAbs==2 && columnDiffAbs==1){
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
