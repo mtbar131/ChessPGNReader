@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MoveParser {
 
@@ -19,6 +20,10 @@ public class MoveParser {
 
 		return Character.toString(move.charAt(i - 1)) + Character.toString(move.charAt(i));
 
+	}
+
+	boolean matchesWithInput(String position, String input){
+		return true;
 	}
 
 	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn){
@@ -48,16 +53,17 @@ public class MoveParser {
 		}
 
 		currentPositions = currentBoardState.getPositions(piece);
-
 		newPosition = getFinalPosition(newPosition);
+		String currPos = "";
 
-		for (String position :  currentPositions){
-			if(currentBoardState.isValidMove(position, move)) {
-				return ;
+		for (String positions : currentPositions){
+			if(currentBoardState.isValidMove(positions, newPosition) &&
+					matchesWithInput(positions, move)){
+				currPos = positions;
 			}
 		}
 
-		return currentBoardState;
+		return currentBoardState.updateBoard(currPos, newPosition);
 	}
 	
 	boolean isWhitesMoveFirst(String move) {
