@@ -67,16 +67,17 @@ public class ChessBoard {
 	boolean isValidMove(String initialPosition, String finalPosition) {
 
 		int[] initialIndex=sanToIndex(initialPosition);
-		int[] finalIndex=sanToIndex(initialPosition);
+		int[] finalIndex=sanToIndex(finalPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
-		
+
 		int rowDiffAbs=Math.abs(finalIndex[0]-initialIndex[0]);
 		int columnDiffAbs=Math.abs(finalIndex[1]-initialIndex[1]);
 
 		if (piece.equals("WP")||piece.equals("BP")){
-			if(rowDiffAbs==1 && (columnDiffAbs==0)||columnDiffAbs==1) {
+			if(rowDiffAbs == 2 && columnDiffAbs == 0)
 				return true;
-			}
+			else if(rowDiffAbs==1  && (columnDiffAbs==0)||columnDiffAbs==1)
+				return true;
 		}
 		
 		if (piece.equals("WK")||piece.equals("BK")){

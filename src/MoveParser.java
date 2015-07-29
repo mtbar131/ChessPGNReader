@@ -24,7 +24,7 @@ public class MoveParser {
 			while (!isaDigit(input.charAt(i))) {
 				i++;
 			}
-			if (i == 2) {
+			if (i == 1 || i == 2) {
 				return true;
 			} else if (i == 3) {
 				if (input.charAt(i - 2) == 'x') {
@@ -82,12 +82,14 @@ public class MoveParser {
 			piece = "B" + piece;
 		}
 
-		System.out.println("Piece is "+piece);
 		currentPositions = currentBoardState.getPositions(piece);
 		newPosition = getFinalPosition(newPosition);
 		String currPos = "";
 
 		for (String positions : currentPositions){
+			System.out.println(matchesWithInput(positions, move));
+			System.out.println(isaValidCapture(currentBoardState, move, newPosition));
+			System.out.println(positions+"|"+newPosition+"|"+move);
 			if(currentBoardState.isValidMove(positions, newPosition) &&
 					matchesWithInput(positions, move) &&
 					isaValidCapture(currentBoardState, move, newPosition)){
@@ -105,7 +107,12 @@ public class MoveParser {
 			currentBoardState.promotePawn(p, newPosition);
 		}
 
-		return currentBoardState.updateBoard(currPos, newPosition);
+		if(currPos.length() > 0)
+			return currentBoardState.updateBoard(currPos, newPosition);
+		else{
+			System.out.println("New position is not valid");
+			return currentBoardState;
+		}
 	}
 	
 	boolean isWhitesMoveFirst(String move) {
