@@ -16,6 +16,11 @@ public class ChessBoard {
 		
 	}
 	
+	String indexToSan(int i,int j)
+	{
+		return null;
+	}
+	
 	ChessBoard updateBoard(String initialPosition, String finalPosition) {
 		return new ChessBoard();
 	}
@@ -31,7 +36,19 @@ public class ChessBoard {
 	}
 	
 	ArrayList<String> getPositions(String piece) {
-		return new ArrayList<String>();
+		
+		ArrayList<String> positions=new ArrayList<String>();
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				if(board[i][j]==piece)
+				{
+					positions.add(indexToSan(i,j));
+				}
+			}
+		}
+		return positions;		
 	}
 	
 	boolean isValidMove(String initialPosition, String finalPosition) {
