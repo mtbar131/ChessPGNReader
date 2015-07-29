@@ -28,7 +28,13 @@ public class ChessBoardTest {
 
 	@Test
 	public void testIndexToSan() {
-		fail("Not yet implemented");
+		ChessBoard board = new ChessBoard();
+		
+		assertEquals("a1", board.indexToSan(7, 0));
+		assertEquals("a8", board.indexToSan(0, 0));
+		assertEquals("h8", board.indexToSan(0, 7));
+		assertEquals("h1", board.indexToSan(7, 7));
+		assertEquals("g7", board.indexToSan(1, 6));
 	}
 
 	@Test
