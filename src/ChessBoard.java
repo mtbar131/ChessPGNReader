@@ -66,9 +66,27 @@ public class ChessBoard {
 	
 	boolean isValidMove(String initialPosition, String finalPosition) {
 
-		int[] index=sanToIndex(initialPosition);
-		String piece=board[index[0]][index[1]];
-		return true;
+		int[] initialIndex=sanToIndex(initialPosition);
+		int[] finalIndex=sanToIndex(initialPosition);
+		String piece=board[initialIndex[0]][initialIndex[1]];
+		int[][] whitePawnMoves={{0, 1}, {1, 1}, {-1, 1}};
+
+		if(piece.equals("WP"))
+		{
+			for(int i=0;i<whitePawnMoves.length;i++)
+			{
+				for(int j=0;j<2;j++)
+				{
+					if(finalIndex[0]==initialIndex[0]+whitePawnMoves[i][j]&&
+							finalIndex[1]==initialIndex[1]+whitePawnMoves[i][j])
+					{
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	void printChessboard() {
