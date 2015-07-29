@@ -4,12 +4,10 @@
 4. exd5 exd5
 5. Ngf3 Nc6
 6. Bb5 Bd6
-7. O-O cxd4
 8. Nb3 Nge7
-9. Bxc6+ Nxc6
-10. Nbxd4 O-O
+9. Bxc6 Nxc6
 11. Re1 Bg4
 12. h3 Bxf3
 13. Nxf3 Qf6
 14. Qxd5 Qd8
-15. Be3 Bh2+
+15. Be3 Bh2

@@ -63,9 +63,29 @@ public class MoveParser {
 
 		if(move.equals("O-O-O")){
 
+			if(isWhitesTurn)
+			{
+				currentBoardState.updateBoard("e1","g1");
+				currentBoardState.updateBoard("h1", "f1");
+
+			}
+			else{
+				currentBoardState.updateBoard("e8","g8");
+				currentBoardState.updateBoard("h8", "f8");
+			}
+			
 		}
 		else if(move.equals("O-O")){
+			if(isWhitesTurn)
+			{
+				currentBoardState.updateBoard("e1","c1");
+				currentBoardState.updateBoard("a1", "d1");
 
+			}
+			else{
+				currentBoardState.updateBoard("e8","c8");
+				currentBoardState.updateBoard("a8", "d8");
+			}
 		}
 
 		if(move.charAt(0) >= 'A' && move.charAt(0) <= 'Z'){
