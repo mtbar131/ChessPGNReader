@@ -47,7 +47,7 @@ public class MoveParserTest {
 
     }
 
-    
+
 	@Test
 	public void testIsWhitesMoveFirst() {
 		MoveParser moveparser = new MoveParser();

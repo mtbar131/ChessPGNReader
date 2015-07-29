@@ -82,6 +82,7 @@ public class MoveParser {
 			piece = "B" + piece;
 		}
 
+		System.out.println("Piece is "+piece);
 		currentPositions = currentBoardState.getPositions(piece);
 		newPosition = getFinalPosition(newPosition);
 		String currPos = "";
@@ -116,21 +117,4 @@ public class MoveParser {
 		return countOfDot == 1;
 	}
 
-	public static void main(String args[]){
-		MoveParser mv = new MoveParser();
-//		System.out.println(mv.getFinalPosition("Pe3"));
-//		System.out.println(mv.getFinalPosition("f4"));
-//		System.out.println(mv.getFinalPosition("Kxe1"));
-//		System.out.println(mv.getFinalPosition("Ra6+"));
-//		System.out.println(mv.getFinalPosition("Kaf6"));
-
-		System.out.println(mv.matchesWithInput("e3", "Ne3"));
-		System.out.println(mv.matchesWithInput("f1", "Ne3"));
-		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
-		System.out.println(mv.matchesWithInput("e3", "Nec3"));
-		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
-		System.out.println(mv.matchesWithInput("b3", "Naxe3"));
-		System.out.println(mv.matchesWithInput("f1", "Ne1xc3"));
-
-	}
 }

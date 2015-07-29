@@ -32,7 +32,7 @@ public class ChessGame {
 	}
 	
 	public static void main(String args[]) {
-		String FILEPATH = "./src/pgn_sample.txt";
+		String FILEPATH = "C:\\Users\\test\\Documents\\BootCamp\\pgn_sample.txt";
 		ChessGame game = new ChessGame();
 		game.processPGN(FILEPATH);
 	}
