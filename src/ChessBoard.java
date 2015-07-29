@@ -19,10 +19,14 @@ public class ChessBoard {
 	
 	}
 	
-	int[] sanToIndex(String position)
+	int[] sanToIndex(String SANposition)
 	{
-		return null;
-		
+		int rowColIndex[] = new int[2];
+		char file = SANposition.charAt(0);
+		int rank = Integer.parseInt(Character.toString(SANposition.charAt(1)));
+		rowColIndex[0] = 8 - rank;
+		rowColIndex[1] = file - 'a';
+		return rowColIndex;	
 	}
 	
 	String indexToSan(int i,int j)
