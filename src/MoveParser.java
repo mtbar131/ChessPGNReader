@@ -9,9 +9,9 @@ public class MoveParser {
 
 	public String getFinalPosition(String move){
 
-		int i = 0;
+		int i = move.length() - 1;
 		while(!isaDigit(move.charAt(i))){
-			i++;
+			i--;
 		}
 
 		return Character.toString(move.charAt(i - 1)) + Character.toString(move.charAt(i));
@@ -20,27 +20,32 @@ public class MoveParser {
 
 	boolean matchesWithInput(String position, String input){
 		int i = 0;
-		while(!isaDigit(input.charAt(i))){
-			i++;
-		}
-		if(i == 2){
-			return true;
-		} else if(i == 3){
-			if(input.charAt(i - 2) == 'x'){
-				return true;
+		if(input.length() < 6) {
+			while (!isaDigit(input.charAt(i))) {
+				i++;
 			}
-			else if(position.charAt(0) == input.charAt(i - 2))
+			if (i == 2) {
 				return true;
-		} else if(i == 4){
-			if(input.charAt(i - 2) == 'x'){
-				return input.charAt(i - 3) == position.charAt(0);
-			}
-			else
+			} else if (i == 3) {
+				if (input.charAt(i - 2) == 'x') {
+					return true;
+				} else if (position.charAt(0) == input.charAt(i - 2))
+					return true;
+			} else if (i == 4) {
+				if (input.charAt(i - 2) == 'x') {
+					return input.charAt(i - 3) == position.charAt(0);
+				} else
+					return input.charAt(i - 3) == position.charAt(1) &&
+							input.charAt(i - 4) == position.charAt(0);
+			} else if (i == 5) {
+				System.out.printf("In i 5" + input + " " + position);
 				return input.charAt(i - 3) == position.charAt(1) &&
 						input.charAt(i - 4) == position.charAt(0);
-		} else if(i == 5){
-			return input.charAt(i - 3) == position.charAt(1) &&
-					input.charAt(i - 4) == position.charAt(0);
+			}
+		}
+		else {
+			return input.charAt(1) == position.charAt(0) &&
+					input.charAt(2) == position.charAt(1);
 		}
 		return false;
 	}
@@ -119,12 +124,13 @@ public class MoveParser {
 //		System.out.println(mv.getFinalPosition("Ra6+"));
 //		System.out.println(mv.getFinalPosition("Kaf6"));
 
-//		System.out.println(mv.matchesWithInput("e3", "Ne3"));
-//		System.out.println(mv.matchesWithInput("f1", "Ne3"));
-//		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
-//		System.out.println(mv.matchesWithInput("e3", "Nec3"));
-//		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
-//		System.out.println(mv.matchesWithInput("a3", "Naxe3"));
-//		System.out.println(mv.matchesWithInput("e1", "Ne1xc3"));
+		System.out.println(mv.matchesWithInput("e3", "Ne3"));
+		System.out.println(mv.matchesWithInput("f1", "Ne3"));
+		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
+		System.out.println(mv.matchesWithInput("e3", "Nec3"));
+		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
+		System.out.println(mv.matchesWithInput("b3", "Naxe3"));
+		System.out.println(mv.matchesWithInput("f1", "Ne1xc3"));
+
 	}
 }
