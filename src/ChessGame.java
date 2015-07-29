@@ -18,6 +18,7 @@ public class ChessGame {
 			Scanner fileReader = new Scanner(new File(PGN_filepath));
 			while( fileReader.hasNextLine() ) {
 				String move[] = fileReader.nextLine().split(" ");
+				System.out.println("Moves are: "+move[0]+"|"+move[1]);
 				boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
 				board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
 				System.out.println("################  CHESSBOARD STATE ################");

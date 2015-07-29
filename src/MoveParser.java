@@ -56,86 +56,79 @@ public class MoveParser {
 		return true;
 	}
 
-	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn){
+	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn) {
 		String piece;
 		String newPosition = move;
 		ArrayList<String> currentPositions;
 
-		if(move.equals("O-O")){
+		if (move.equals("O-O")) {
 
-			if(isWhitesTurn)
-			{
-				currentBoardState.updateBoard("e1","g1");
+			if (isWhitesTurn) {
+				currentBoardState.updateBoard("e1", "g1");
 				currentBoardState.updateBoard("h1", "f1");
 
-			}
-			else{
-				currentBoardState.updateBoard("e8","g8");
+			} else {
+				currentBoardState.updateBoard("e8", "g8");
 				currentBoardState.updateBoard("h8", "f8");
 			}
-			
-		}
-		else if(move.equals("O-O-O")){
-			if(isWhitesTurn)
-			{
-				currentBoardState.updateBoard("e1","c1");
+			return currentBoardState;
+		} else if (move.equals("O-O-O")) {
+			if (isWhitesTurn) {
+				currentBoardState.updateBoard("e1", "c1");
 				currentBoardState.updateBoard("a1", "d1");
 
-			}
-			else{
-				currentBoardState.updateBoard("e8","c8");
+			} else {
+				currentBoardState.updateBoard("e8", "c8");
 				currentBoardState.updateBoard("a8", "d8");
 			}
-		}
+			return currentBoardState;
+		} else {
+			if (move.charAt(0) >= 'A' && move.charAt(0) <= 'Z') {
+				piece = Character.toString(move.charAt(0));
+				newPosition = move.substring(1);
+			} else
+				piece = "P";
 
-		if(move.charAt(0) >= 'A' && move.charAt(0) <= 'Z'){
-			piece = Character.toString(move.charAt(0));
-			newPosition = move.substring(1);
-		}
-		else
-			piece = "P";
+			if (isWhitesTurn) {
+				piece = "W" + piece;
+			} else {
+				piece = "B" + piece;
+			}
 
-		if(isWhitesTurn){
-			piece = "W" + piece;
-		}
-		else{
-			piece = "B" + piece;
-		}
+			currentPositions = currentBoardState.getPositions(piece);
+			newPosition = getFinalPosition(newPosition);
+			String currPos = "";
 
-		currentPositions = currentBoardState.getPositions(piece);
-		newPosition = getFinalPosition(newPosition);
-		String currPos = "";
+			for (String positions : currentPositions) {
 
-		for (String positions : currentPositions){
+				if (currentBoardState.isValidMove(positions, newPosition, move.contains(Character.toString('x'))) &&
+						matchesWithInput(positions, move) &&
+						isaValidCapture(currentBoardState, move, newPosition)) {
+					System.out.println(matchesWithInput(positions, move));
+					System.out.println(isaValidCapture(currentBoardState, move, newPosition));
+					System.out.println(positions + "|" + newPosition + "|" + move);
+					currPos = positions;
+				}
+			}
 
-			if(currentBoardState.isValidMove(positions, newPosition , move.contains(Character.toString('x'))) &&
-					matchesWithInput(positions, move) &&
-					isaValidCapture(currentBoardState, move, newPosition)){
-				System.out.println(matchesWithInput(positions, move));
-				System.out.println(isaValidCapture(currentBoardState, move, newPosition));
-				System.out.println(positions+"|"+newPosition+"|"+move);
-				currPos = positions;
+			if (move.contains(Character.toString('='))) {
+				String p;
+				if (isWhitesTurn)
+					p = "W";
+				else
+					p = "B";
+				p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
+				currentBoardState.promotePawn(p, newPosition);
+			}
+
+			if (currPos.length() > 0)
+				return currentBoardState.updateBoard(currPos, newPosition);
+			else {
+				System.out.println("New position is not valid");
+				return currentBoardState;
 			}
 		}
-
-		if(move.contains(Character.toString('='))){
-			String p;
-			if(isWhitesTurn)
-				p = "W";
-			else
-				p = "B";
-			p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
-			currentBoardState.promotePawn(p, newPosition);
-		}
-
-		if(currPos.length() > 0)
-			return currentBoardState.updateBoard(currPos, newPosition);
-		else{
-			System.out.println("New position is not valid");
-			return currentBoardState;
-		}
 	}
-	
 	boolean isWhitesMoveFirst(String move) {
 		int countOfDot = 0;
 		for ( int i = 0; i < move.length(); i++ ) {
