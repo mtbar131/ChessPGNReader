@@ -23,7 +23,30 @@ public class MoveParser {
 	}
 
 	boolean matchesWithInput(String position, String input){
-		return true;
+		int i = 0;
+		while(!isaDigit(input.charAt(i))){
+			i++;
+		}
+		if(i == 2){
+			return true;
+		} else if(i == 3){
+			if(input.charAt(i - 2) == 'x'){
+				return true;
+			}
+			else if(position.charAt(0) == input.charAt(i - 2))
+				return true;
+		} else if(i == 4){
+			if(input.charAt(i - 2) == 'x'){
+				return input.charAt(i - 3) == position.charAt(1);
+			}
+			else
+				return input.charAt(i - 3) == position.charAt(1) &&
+						input.charAt(i - 4) == position.charAt(0);
+		} else if(i == 5){
+			return input.charAt(i - 3) == position.charAt(1) &&
+					input.charAt(i - 4) == position.charAt(0);
+		}
+		return false;
 	}
 
 	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn){
