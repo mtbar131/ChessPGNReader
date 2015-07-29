@@ -119,12 +119,12 @@ public class MoveParser {
 //		System.out.println(mv.getFinalPosition("Ra6+"));
 //		System.out.println(mv.getFinalPosition("Kaf6"));
 
-		System.out.println(mv.matchesWithInput("e3", "Ne3"));
-		System.out.println(mv.matchesWithInput("f1", "Ne3"));
-		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
-		System.out.println(mv.matchesWithInput("e3", "Nec3"));
-		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
-		System.out.println(mv.matchesWithInput("a3", "Naxe3"));
-		System.out.println(mv.matchesWithInput("e1", "Ne1xc3"));
+//		System.out.println(mv.matchesWithInput("e3", "Ne3"));
+//		System.out.println(mv.matchesWithInput("f1", "Ne3"));
+//		System.out.println(mv.matchesWithInput("d1", "Nxe3"));
+//		System.out.println(mv.matchesWithInput("e3", "Nec3"));
+//		System.out.println(mv.matchesWithInput("a1", "Nfc3"));
+//		System.out.println(mv.matchesWithInput("a3", "Naxe3"));
+//		System.out.println(mv.matchesWithInput("e1", "Ne1xc3"));
 	}
 }
