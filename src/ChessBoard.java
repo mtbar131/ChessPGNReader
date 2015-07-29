@@ -48,7 +48,7 @@ public class ChessBoard {
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(board[i][j]==piece)
+				if(board[i][j].equals(piece))
 				{
 					positions.add(indexToSan(i,j));
 				}
@@ -69,7 +69,7 @@ public class ChessBoard {
 		{
 			for(int j=0;j<8;j++)
 			{
-				if(board[i][j]!="")
+				if(!board[i][j].equals(""))
 				{
 					System.out.println(indexToSan(i, j)+"-"+board[i][j]);
 				}

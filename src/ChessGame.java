@@ -19,8 +19,8 @@ public class ChessGame {
 			while( fileReader.hasNextLine() ) {
 				String move[] = fileReader.nextLine().split(" ");
 				boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
-				board = moveParser.updateChaessboard(board, move[1], isWhitesMoveFirst);
-				board = moveParser.updateChaessboard(board, move[2], !isWhitesMoveFirst);
+				board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
+				board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("PGN file cannot be read.");
