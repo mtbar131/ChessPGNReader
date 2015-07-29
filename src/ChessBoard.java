@@ -124,9 +124,13 @@ public class ChessBoard {
 			{
 				if(!board[i][j].equals(""))
 				{
-					System.out.println(indexToSan(i, j)+"-"+board[i][j]);
+					System.out.print(" " + board[i][j] + " ");
+				}
+				else {
+					System.out.print("    ");
 				}
 			}
+			System.out.println();
 		}
 	}
 

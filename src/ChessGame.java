@@ -20,19 +20,21 @@ public class ChessGame {
 				String move[] = fileReader.nextLine().split(" ");
 				boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
 				board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
+				System.out.println("################  CHESSBOARD STATE ################");
+				board.printChessboard();
 				board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
+				System.out.println("---------------------------------------------------");
+				board.printChessboard();
+				System.out.println("################  CHESSBOARD STATE ################");
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("PGN file cannot be read.");
 			e.printStackTrace();
 		}
-		
-		System.out.println("################  CHESSBOARD STATE ################");
-		board.printChessboard();
 	}
 	
 	public static void main(String args[]) {
-		String FILEPATH = "C:\\Users\\test\\IdeaProjects\\BootCamp\\ChessPGNParser\\src\\pgn_sample.txt";
+		String FILEPATH = "./src/pgn_sample.txt";
 		ChessGame game = new ChessGame();
 		game.processPGN(FILEPATH);
 	}
