@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ChessBoard {
 
 
 	String[][] board; 
+	
+	HashMap<String, ArrayList<int[]>>possibleMoves=new HashMap <String, ArrayList<int[]>>();
 	
 	ChessBoard(){
 		this.board = new String[][] {{"BR","BN","BB","BQ","BK","BB","BN","BR"},
@@ -16,7 +19,7 @@ public class ChessBoard {
 									 {"WP","WP","WP","WP","WP","WP","WP","WP"},
 									 {"WR","WN","WB","WQ","WK","WB","WN","WR"}
 									};
-	
+		
 	}
 	
 	int[] sanToIndex(String SANposition)
@@ -69,19 +72,26 @@ public class ChessBoard {
 		int[] initialIndex=sanToIndex(initialPosition);
 		int[] finalIndex=sanToIndex(initialPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
+		
+		
+
+		
 		int[][] whitePawnMoves={{0, 1}, {1, 1}, {-1, 1}};
 
 		if(piece.equals("WP"))
 		{
-			for(int i=0;i<whitePawnMoves.length;i++)
+			
+		
+			/*for(int i=0;i<whitePawnMoves.length;i++)
 			{
 					if(finalIndex[0]==initialIndex[0]+whitePawnMoves[i][0]&&
 							finalIndex[1]==initialIndex[1]+whitePawnMoves[i][1])
 					{
 						return true;
 					}
-			}
+			}*/
 		}
+
 		
 		return false;
 	}
