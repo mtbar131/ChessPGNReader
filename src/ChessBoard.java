@@ -75,14 +75,11 @@ public class ChessBoard {
 		{
 			for(int i=0;i<whitePawnMoves.length;i++)
 			{
-				for(int j=0;j<2;j++)
-				{
-					if(finalIndex[0]==initialIndex[0]+whitePawnMoves[i][j]&&
-							finalIndex[1]==initialIndex[1]+whitePawnMoves[i][j])
+					if(finalIndex[0]==initialIndex[0]+whitePawnMoves[i][0]&&
+							finalIndex[1]==initialIndex[1]+whitePawnMoves[i][1])
 					{
 						return true;
 					}
-				}
 			}
 		}
 		
