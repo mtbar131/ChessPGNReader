@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 public class ChessGame {
 
@@ -9,7 +13,21 @@ public class ChessGame {
 		this.moveParser = new MoveParser();
 	}
 	
-	void processPGN(ChessBoard initialBoardState, String PGN_filepath) {
+	void processPGN(String PGN_filepath) {
+		try {
+			Scanner fileReader = new Scanner(new File(PGN_filepath));
+			while( fileReader.hasNextLine() ) {
+				String move[] = fileReader.nextLine().split(" ");
+				boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
+				board = moveParser.updateChaessboard(board, move[1], isWhitesMoveFirst);
+				board = moveParser.updateChaessboard(board, move[2], !isWhitesMoveFirst);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("PGN file cannot be read.");
+			e.printStackTrace();
+		}
 		
+		System.out.println("################  CHESSBOARD STATE ################");
+		board.printChessboard();
 	}
 }
