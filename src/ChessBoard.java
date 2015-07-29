@@ -4,9 +4,18 @@ import java.util.ArrayList;
 public class ChessBoard {
 
 
-	String[][] board={{"BR","BK","BB","BQ","BK","BB","BK","BR"},{"BP","BP","BP","BP","BP","BP","BP","BP"},{"","","","","","","","",},{"","","","","","","","",},{"","","","","","","","",},{"","","","","","","","",},{"WP","WP","WP","WP","WP","WP","WP","WP",},{"WR","WK","WB","WQ","WK","WB","WK","WR"}}; 
+	String[][] board; 
 	
 	ChessBoard(){
+		this.board = new String[][] {{"BR","BN","BB","BQ","BK","BB","BN","BR"},
+									 {"BP","BP","BP","BP","BP","BP","BP","BP"},
+									 {""  ,""  ,""  ,""  ,""  ,""  ,""  ,""  },
+									 {""  ,""  ,""  ,""  ,""  ,""  ,""  ,""  },
+									 {""  ,""  ,""  ,""  ,""  ,""  ,""  ,""  },
+									 {""  ,""  ,""  ,""  ,""  ,""  ,""  ,""  },
+									 {"WP","WP","WP","WP","WP","WP","WP","WP"},
+									 {"WR","WN","WB","WQ","WK","WB","WN","WR"}
+									};
 	
 	}
 	
