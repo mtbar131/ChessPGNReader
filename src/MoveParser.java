@@ -6,7 +6,12 @@ public class MoveParser {
 	}
 	
 	boolean isWhitesMoveFirst(String move) {
-		return true;
+		int countOfDot = 0;
+		for ( int i = 0; i < move.length(); i++ ) {
+			if ( move.charAt(i) == '.' )
+				countOfDot++;
+		}
+		return countOfDot == 1;
 	}
 
 }
