@@ -7,7 +7,7 @@ public class ChessBoard {
 
 	String[][] board; 
 	
-	HashMap<String, ArrayList<int[]>>possibleMoves=new HashMap <String, ArrayList<int[]>>();
+	HashMap<String, ArrayList<int[]>> possibleMoves=new HashMap <String, ArrayList<int[]>>();
 	
 	ChessBoard(){
 		this.board = new String[][] {{"BR","BN","BB","BQ","BK","BB","BN","BR"},
@@ -73,23 +73,12 @@ public class ChessBoard {
 		int[] finalIndex=sanToIndex(initialPosition);
 		String piece=board[initialIndex[0]][initialIndex[1]];
 		
-		
-
-		
-		int[][] whitePawnMoves={{0, 1}, {1, 1}, {-1, 1}};
-
 		if(piece.equals("WP"))
 		{
-			
+		ArrayList<int[]> whitePawnMoves=possibleMoves.get("WB"); 	
 		
-			/*for(int i=0;i<whitePawnMoves.length;i++)
-			{
-					if(finalIndex[0]==initialIndex[0]+whitePawnMoves[i][0]&&
-							finalIndex[1]==initialIndex[1]+whitePawnMoves[i][1])
-					{
-						return true;
-					}
-			}*/
+		
+		
 		}
 
 		
@@ -97,7 +86,6 @@ public class ChessBoard {
 	}
 	
 	void printChessboard() {
-	
 		for(int i=0;i<8;i++)
 		{
 			for(int j=0;j<8;j++)
@@ -111,7 +99,7 @@ public class ChessBoard {
 	}
 
 	ChessBoard promotePawn(String piece, String postion){
-
+		return null;
 	}
 	
 }
