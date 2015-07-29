@@ -24,8 +24,7 @@ public class ChessBoard {
 
 	}
 
-	int[] sanToIndex(String SANposition)
-	{
+	int[] sanToIndex(String SANposition) {
 		int rowColIndex[] = new int[2];
 		char file = SANposition.charAt(0);
 		int rank = Integer.parseInt(Character.toString(SANposition.charAt(1)));
@@ -34,8 +33,7 @@ public class ChessBoard {
 		return rowColIndex;	
 	}
 
-	String indexToSan(int row,int column)
-	{
+	String indexToSan(int row,int column) {
 		String file = Character.toString((char) ('a' + column));
 		String rank = Integer.toString(8 - row);
 		return file + rank;
@@ -56,12 +54,9 @@ public class ChessBoard {
 
 	ArrayList<String> getPositions(String piece) {
 		ArrayList<String> positions=new ArrayList<String>();
-		for(int i=0;i<8;i++)
-		{
-			for(int j=0;j<8;j++)
-			{
-				if(board[i][j].equals(piece))
-				{
+		for (int i=0;i<8;i++){
+			for (int j=0;j<8;j++){
+				if (board[i][j].equals(piece)){
 					positions.add(indexToSan(i,j));
 				}
 			}
@@ -92,7 +87,23 @@ public class ChessBoard {
 			}
 		}
 		
-	
+		if (piece.equals("WB")||piece.equals("BB")) {
+			if (rowDiffAbs==columnDiffAbs) {
+				return true;
+			}
+		}
+		
+		if (piece.equals("WB")||piece.equals("BB")) {
+			if (rowDiffAbs==columnDiffAbs) {
+				return true;
+			}
+		}
+		
+		if (piece.equals("WR")||piece.equals("BR")) {
+			if ((rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)){
+				return true;
+			}
+		}
 		
 		return false;
 	}
