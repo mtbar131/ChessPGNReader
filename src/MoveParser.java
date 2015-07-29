@@ -87,12 +87,13 @@ public class MoveParser {
 		String currPos = "";
 
 		for (String positions : currentPositions){
-			System.out.println(matchesWithInput(positions, move));
-			System.out.println(isaValidCapture(currentBoardState, move, newPosition));
-			System.out.println(positions+"|"+newPosition+"|"+move);
+
 			if(currentBoardState.isValidMove(positions, newPosition) &&
 					matchesWithInput(positions, move) &&
 					isaValidCapture(currentBoardState, move, newPosition)){
+				System.out.println(matchesWithInput(positions, move));
+				System.out.println(isaValidCapture(currentBoardState, move, newPosition));
+				System.out.println(positions+"|"+newPosition+"|"+move);
 				currPos = positions;
 			}
 		}
