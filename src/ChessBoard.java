@@ -36,13 +36,12 @@ public class ChessBoard {
 		return this;
 	}
 	
-	String whichPiece(String position){
+	String whichPiece(String position) {
 		int[] positionIndex=sanToIndex(position);
 		return board[positionIndex[0]][positionIndex[1]];
 	}
 	
 	ArrayList<String> getPositions(String piece) {
-		
 		ArrayList<String> positions=new ArrayList<String>();
 		for(int i=0;i<8;i++)
 		{
@@ -57,9 +56,10 @@ public class ChessBoard {
 		return positions;		
 	}
 	
-
 	boolean isValidMove(String initialPosition, String finalPosition) {
 
+		int[] index=sanToIndex(initialPosition);
+		String piece=board[index[0]][index[1]];
 		return true;
 	}
 	
