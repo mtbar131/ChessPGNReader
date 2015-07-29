@@ -19,24 +19,21 @@ public class ChessBoard {
 	
 	}
 	
-	int[] sanToIndex(String position)
-	{
+	int[] sanToIndex(String position) {
 		return null;
 		
 	}
 	
-	String indexToSan(int i,int j)
-	{
+	String indexToSan(int i,int j){
 		return null;
 	}
 	
 	ChessBoard updateBoard(String initialPosition, String finalPosition) {
-		return new ChessBoard();
-	}
-	
-	ChessBoard updateChessBoard(String move)
-	{	
-		return null;
+		int[] initialIndex=sanToIndex(initialPosition);
+		int[] finalIndex=sanToIndex(finalPosition);
+		board[finalIndex[0]][finalIndex[1]]=board[initialIndex[0]][initialIndex[1]];
+		board[initialIndex[0]][initialIndex[1]]="";
+		return this;
 	}
 	
 	String whichPiece(String position){
