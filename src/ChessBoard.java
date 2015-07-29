@@ -29,9 +29,11 @@ public class ChessBoard {
 		return rowColIndex;	
 	}
 	
-	String indexToSan(int i,int j)
+	String indexToSan(int row,int column)
 	{
-		return null;
+		String file = Character.toString( (char)('a' + column) );
+		String rank = Integer.toString( 8 - row );
+		return file + rank;
 	}
 	
 	ChessBoard updateBoard(String initialPosition, String finalPosition) {
