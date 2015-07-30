@@ -33,11 +33,12 @@ public class ChessGame {
 						String move[] = matcher.group().split(" +");
 						System.out.println("<< MOVE : " + Arrays.deepToString(move) + " >>");
 						boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
-						board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
+						
 						System.out.println("################  CHESSBOARD STATE ################");
+						board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
 						board.printChessboard();
-						board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
 						System.out.println("---------------------------------------------------");
+						board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
 						board.printChessboard();
 						System.out.println("################  CHESSBOARD STATE ################");
 					}
