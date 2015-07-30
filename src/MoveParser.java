@@ -125,8 +125,7 @@ public class MoveParser {
 					p = "W";
 				else
 					p = "B";
-				p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
-				System.out.println("Pawn Promotion|"+p +"|"+newPosition);
+				p = p + move.charAt(move.indexOf("=") + 1);
 				currentBoardState = currentBoardState.promotePawn(p, newPosition);
 			}
 
