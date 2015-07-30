@@ -56,8 +56,8 @@ public class ChessBoardTest {
 	@Test
 	public void testIsValidMove() {
 		ChessBoard board = new ChessBoard();
-		//board.isValidMove("a2", "a3", true);
-		
+		assertEquals(true,board.isValidMove("a2", "a3", true));
+		assertEquals(true,board.isValidMove("b1", "a3", true));
 	}
 
 }
