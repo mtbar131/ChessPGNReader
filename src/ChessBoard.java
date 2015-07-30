@@ -124,6 +124,7 @@ public class ChessBoard {
 	void printChessboard() {
 		for(int i=0;i<8;i++)
 		{
+			System.out.print(8 - i);
 			for(int j=0;j<8;j++)
 			{
 				if(!board[i][j].equals(""))
@@ -136,6 +137,7 @@ public class ChessBoard {
 			}
 			System.out.println();
 		}
+		System.out.println("  a   b   c   d   e   f   g   h");
 	}
 
 	ChessBoard promotePawn(String piece, String postion){
