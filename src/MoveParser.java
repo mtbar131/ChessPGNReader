@@ -103,12 +103,20 @@ public class MoveParser {
 			String currPos = "";
 
 			for (String positions : currentPositions) {
-				
+
 				if (currentBoardState.isValidMove(positions, newPosition, move.contains(Character.toString('x'))) &&
 						matchesWithInput(positions, handlePawnCase) &&
 						isaValidCapture(currentBoardState, move, newPosition)) {
 					currPos = positions;
 				}
+			}
+
+			if (currPos.length() > 0)
+				currentBoardState = currentBoardState.updateBoard(currPos, newPosition);
+			else {
+				System.out.println("New position is not valid");
+				System.out.println("ArrayList size iss"+currentPositions.size());
+				return currentBoardState;
 			}
 
 			if (move.contains(Character.toString('='))) {
@@ -117,17 +125,13 @@ public class MoveParser {
 					p = "W";
 				else
 					p = "B";
-				p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
-				currentBoardState.promotePawn(p, newPosition);
+
+				p = p + move.charAt(move.indexOf("=") + 1);
+
+				currentBoardState = currentBoardState.promotePawn(p, newPosition);
 			}
 
-			if (currPos.length() > 0)
-				return currentBoardState.updateBoard(currPos, newPosition);
-			else {
-				System.out.println("New position is not valid");
-				System.out.println("ArrayList size iss"+currentPositions.size());
-				return currentBoardState;
-			}
+			return currentBoardState;
 		}
 	}
 	boolean isWhitesMoveFirst(String move) {
