@@ -113,7 +113,7 @@ public class ChessBoard {
 		}
 			
 		if (piece.equals("WN")||piece.equals("BN")) {
-			if (rowDiffAbs==2 && columnDiffAbs==1){
+			if ((rowDiffAbs==2 && columnDiffAbs==1)||(rowDiffAbs==1 && columnDiffAbs==2)){
 				return true;
 			}
 		}
