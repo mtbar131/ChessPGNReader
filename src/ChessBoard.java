@@ -81,7 +81,7 @@ public class ChessBoard {
 				return true;
 			return false;
 		}
-		
+
 		if (piece.equals("WK")||piece.equals("BK")){
 			if ((rowDiffAbs==0 && columnDiffAbs==1) || (rowDiffAbs==1 && columnDiffAbs==0) ||
 					(rowDiffAbs==1 && columnDiffAbs==1))				
@@ -89,19 +89,66 @@ public class ChessBoard {
 				return true;
 			}
 		}
-		
+
 		if (piece.equals("WB")||piece.equals("BB")) {
 			if (rowDiffAbs==columnDiffAbs) {
 				return true;
 			}
 		}
-		
+
 		if (piece.equals("WR")||piece.equals("BR")) {
-			if ((rowDiffAbs==0 && columnDiffAbs>0)||(rowDiffAbs>0 && columnDiffAbs==0)){
-				return true;
+			if (rowDiffAbs==0 && columnDiffAbs>0) {
+				if(initialIndex[1]>finalIndex[1])
+				{
+					for(int i=initialIndex[1]+1;i<finalIndex[1]-1;i++)
+					{
+						if(!board[initialIndex[0]][i].equals(""))
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+				else
+				{
+					for(int i=finalIndex[1]-1;i<initialIndex[1]+1;i--)
+					{
+						if(!board[initialIndex[0]][i].equals(""))
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+				
+			}
+			else if	(rowDiffAbs>0 && columnDiffAbs==0){	
+				if(initialIndex[0]>finalIndex[0])
+				{
+					for(int i=initialIndex[0]+1;i<finalIndex[0]-1;i++)
+					{
+						if(!board[initialIndex[0]][i].equals(""))
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+				else
+				{
+					for(int i=finalIndex[0]-1;i<initialIndex[0]+1;i--)
+					{
+						if(!board[initialIndex[0]][i].equals(""))
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+				
 			}
 		}
-		
+
 		if(piece.equals("WQ")||piece.equals("BQ"))
 		{
 			if ((rowDiffAbs==columnDiffAbs)||
@@ -109,13 +156,13 @@ public class ChessBoard {
 				return true;
 			}
 		}
-			
+
 		if (piece.equals("WN")||piece.equals("BN")) {
 			if ((rowDiffAbs==2 && columnDiffAbs==1)||(rowDiffAbs==1 && columnDiffAbs==2)){
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
