@@ -103,7 +103,7 @@ public class MoveParser {
 			String currPos = "";
 
 			for (String positions : currentPositions) {
-				
+
 				if (currentBoardState.isValidMove(positions, newPosition, move.contains(Character.toString('x'))) &&
 						matchesWithInput(positions, handlePawnCase) &&
 						isaValidCapture(currentBoardState, move, newPosition)) {
@@ -118,6 +118,7 @@ public class MoveParser {
 				else
 					p = "B";
 				p = p + move.substring(move.indexOf('='), move.indexOf('=') + 1);
+				System.out.println("Pawn Promotion|"+p +"|"+newPosition);
 				currentBoardState.promotePawn(p, newPosition);
 			}
 

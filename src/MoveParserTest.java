@@ -37,17 +37,6 @@ public class MoveParserTest {
 
     }
 
-    @Test
-    public void testIsaValidCapture() throws Exception {
-
-    }
-
-    @Test
-    public void testUpdateChessboard() throws Exception {
-
-    }
-
-
 	@Test
 	public void testIsWhitesMoveFirst() {
 		MoveParser moveparser = new MoveParser();
