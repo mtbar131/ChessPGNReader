@@ -100,7 +100,7 @@ public class ChessBoard {
 			if (rowDiffAbs==0 && columnDiffAbs>0) {
 				if(initialIndex[1]>finalIndex[1])
 				{
-					for(int i=initialIndex[1]+1;i<finalIndex[1]-1;i++)
+					for(int i=finalIndex[1]+1;i<initialIndex[1]-1;i++)
 					{
 						if(!board[initialIndex[0]][i].equals(""))
 						{
@@ -111,7 +111,7 @@ public class ChessBoard {
 				}
 				else
 				{
-					for(int i=finalIndex[1]-1;i<initialIndex[1]+1;i--)
+					for(int i=initialIndex[1]+1;i<finalIndex[1]-1;i++)
 					{
 						if(!board[initialIndex[0]][i].equals(""))
 						{
@@ -125,9 +125,9 @@ public class ChessBoard {
 			else if	(rowDiffAbs>0 && columnDiffAbs==0){	
 				if(initialIndex[0]>finalIndex[0])
 				{
-					for(int i=initialIndex[0]+1;i<finalIndex[0]-1;i++)
+					for(int i=finalIndex[0]+1;i<initialIndex[0]-1;i++)
 					{
-						if(!board[initialIndex[0]][i].equals(""))
+						if(!board[i][initialIndex[1]].equals(""))
 						{
 							return false;
 						}
@@ -136,9 +136,9 @@ public class ChessBoard {
 				}
 				else
 				{
-					for(int i=finalIndex[0]-1;i<initialIndex[0]+1;i--)
+					for(int i=initialIndex[0]+1;i<finalIndex[0]-1;i++)
 					{
-						if(!board[initialIndex[0]][i].equals(""))
+						if(!board[i][initialIndex[1]].equals(""))
 						{
 							return false;
 						}
