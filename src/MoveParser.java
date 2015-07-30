@@ -59,6 +59,7 @@ public class MoveParser {
 	ChessBoard updateChessboard(ChessBoard currentBoardState, String move, boolean isWhitesTurn) {
 		String piece;
 		String newPosition = move;
+		String handlePawnCase = move;
 		ArrayList<String> currentPositions;
 
 		if (move.equals("O-O")) {
@@ -86,8 +87,10 @@ public class MoveParser {
 			if (move.charAt(0) >= 'A' && move.charAt(0) <= 'Z') {
 				piece = Character.toString(move.charAt(0));
 				newPosition = move.substring(1);
-			} else
+			} else {
 				piece = "P";
+				handlePawnCase = "P" + move;
+			}
 
 			if (isWhitesTurn) {
 				piece = "W" + piece;
@@ -100,13 +103,10 @@ public class MoveParser {
 			String currPos = "";
 
 			for (String positions : currentPositions) {
-
+				
 				if (currentBoardState.isValidMove(positions, newPosition, move.contains(Character.toString('x'))) &&
-						matchesWithInput(positions, move) &&
+						matchesWithInput(positions, handlePawnCase) &&
 						isaValidCapture(currentBoardState, move, newPosition)) {
-					System.out.println(matchesWithInput(positions, move));
-					System.out.println(isaValidCapture(currentBoardState, move, newPosition));
-					System.out.println(positions + "|" + newPosition + "|" + move);
 					currPos = positions;
 				}
 			}
@@ -125,6 +125,7 @@ public class MoveParser {
 				return currentBoardState.updateBoard(currPos, newPosition);
 			else {
 				System.out.println("New position is not valid");
+				System.out.println("ArrayList size iss"+currentPositions.size());
 				return currentBoardState;
 			}
 		}
