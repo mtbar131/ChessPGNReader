@@ -1,13 +1,19 @@
-1. e4 e6
-2. d4 d5
-3. Nd2 c5
-4. exd5 exd5
-5. Ngf3 Nc6
-6. Bb5 Bd6
-8. Nb3 Nge7
-9. Bxc6 Nxc6
-11. Re1 Bg4
-12. h3 Bxf3
-13. Nxf3 Qf6
-14. Qxd5 Qd8
-15. Be3 Bh2
+[Event "Moscow Kasparov Cup"]
+[Site "Moscow"]
+[Date "1998.??.??"]
+[Round "1"]
+[White "Afonin, Alexey"]
+[Black "Alekseev, Evgeny"]
+[Result "0-1"]
+[WhiteElo "2190"]
+[BlackElo "2275"]
+[ECO "B01"]
+
+
+1. e4 d5 2. exd5 Nf6 3. d4 Nxd5 4. Nf3 g6 5. Be2 Bg7 6. O-O O-O 7. Na3 Nc6 8. Nc4 Nb6
+9. c3 Nxc4 10. Bxc4 Bg4 11. Be2 Qd6 12. h3 Bxf3 13. Bxf3 Rab8 14. Be3 Rfd8 15. Re1 e6
+16. Qb3 h6 17. Rad1 b5 18. d5 Na5 19. Qc2 e5 20. Bxa7 Ra8 21. Be3 Nc4 22. b3 Nxe3
+23. fxe3 e4 24. Bxe4 Ra6 25. Bd3 Qg3 26. Qf2 Qxf2+ 27. Kxf2 Bxc3 28. Re2 Rxd5 29. Bc2 Rf6+
+30. Kg1 Rxd1+ 31. Bxd1 Rd6 32. Bc2 c5 33. Kf2 Kg7 34. Be4 Bd2 35. Bc6 c4 36. bxc4 bxc4
+37. Ba4 c3 38. Kf3 Ra6 39. Bb3 Rb6 40. Bd1 Rb1 41. Ba4 Rb2 42. a3 c2 43. Bxc2 Rxc2
+44. Ke4 Rb2 45. Kd3 Bc3  0-1
