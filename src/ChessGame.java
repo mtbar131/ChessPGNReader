@@ -18,21 +18,39 @@ public class ChessGame {
 	
 	void processPGN(String PGN_filepath) {
 		try {
-			Pattern moveStringPattern = Pattern.compile("\\d+[.]{1,3} +[a-h0-8KQRNBPOx#-+=/]+ +[a-h0-8KQRNBPOx#-+=/]+");
+			Pattern moveStringPattern = Pattern.compile("\\d+[.]{1,3} +[a-h0-8KQRNBPOx#+=-]+ +[a-h0-8KQRNBPOx#+=-]+");
+			
 			Scanner fileReader = new Scanner(new File(PGN_filepath));
 			while( fileReader.hasNextLine() ) {
-				Matcher matcher = moveStringPattern.matcher(fileReader.nextLine());
-				while ( matcher.find() ){
-					String move[] = matcher.group().split(" ");
-					System.out.println(Arrays.deepToString(move));
-					boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
-					board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
-					System.out.println("################  CHESSBOARD STATE ################");
-					board.printChessboard();
-					board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
-					System.out.println("---------------------------------------------------");
-					board.printChessboard();
-					System.out.println("################  CHESSBOARD STATE ################");
+				String pgnLine = fileReader.nextLine();
+				
+				if(pgnLine.trim().startsWith("[")){
+					System.out.println(pgnLine);
+				}
+				else {
+					Matcher matcher = moveStringPattern.matcher(pgnLine);
+					while ( matcher.find() ){
+						String move[] = matcher.group().split(" +");
+						System.out.println("<< MOVE : " + Arrays.deepToString(move) + " >>");
+						boolean isWhitesMoveFirst = moveParser.isWhitesMoveFirst(move[0]);
+						
+						System.out.println("################  CHESSBOARD STATE ################");
+						board = moveParser.updateChessboard(board, move[1], isWhitesMoveFirst);
+						board.printChessboard();
+						System.out.println("---------------------------------------------------");
+						board = moveParser.updateChessboard(board, move[2], !isWhitesMoveFirst);
+						board.printChessboard();
+						System.out.println("################  CHESSBOARD STATE ################");
+					}
+					if ( pgnLine.contains("0-1") ){
+						System.out.println("BLACK wins the match");
+					}
+					else if ( pgnLine.contains("1-0") ) {
+						System.out.println("WHITE wins the match");
+					}
+					else if ( pgnLine.contains("1/2-1/2")) {
+						System.out.println("The match was a draw");
+					}
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -42,6 +60,7 @@ public class ChessGame {
 	}
 	
 	public static void main(String args[]) {
+
 		//String FILEPATH = "./src/pgn_sample.txt";
 		String FILEPATH = "C:\\Users\\test\\Documents\\BootCamp\\pgn_sample.txt";
 		ChessGame game = new ChessGame();

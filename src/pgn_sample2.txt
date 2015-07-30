@@ -1,0 +1,18 @@
+[Event "Wch U14"]
+[Site "Oropesa del Mar"]
+[Date "1999.10.28"]
+[Round "5"]
+[White "Kuljarevic, Davorin"]
+[Black "Alekseev, Evgeny"]
+[Result "0-1"]
+[WhiteElo "2067"]
+[BlackElo "2400"]
+[ECO "E68"]
+
+1. d4 Nf6 2. Nf3 g6 3. g3 Bg7 4. Bg2 O-O 5. O-O d6 6. c4 Nbd7 7. Nc3 e5 8. e4 a6
+9. h3 b5 10. dxe5 dxe5 11. Re1 c6 12. Qc2 Qe7 13. a3 Bb7 14. Be3 a5 15. Nd2 b4 16. Na4 c5
+17. f3 Rfc8 18. b3 Ne8 19. Nf1 Nc7 20. Bf2 Ne6 21. Ne3 Nd4 22. Qd1 Qd6 23. Nd5 Bxd5
+24. exd5 Re8 25. Kh2 h5 26. h4 f5 27. axb4 axb4 28. Bxd4 cxd4 29. Qd3 e4 30. fxe4 Ne5
+31. Qf1 Ng4+ 32. Kh3 fxe4 33. c5 Qxd5 34. Nb6 Qe6 35. Rxe4 Nf2+ 36. Kh2 Nxe4 37. Rxa8 Rxa8
+38. Nxa8 Nxc5 39. Nc7 Qe5 40. Bd5+ Kh7 41. Qf7 d3 42. Ne8 d2 43. Nxg7 Qxg7 44. Qf3 Qd7
+45. Kg2 Qf5 46. Kf2 d1=Q  0-1
